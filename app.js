@@ -6,6 +6,22 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 
 /* ------------------
+        CORS 
+---------------------*/
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Orgin, X-Requested-With, Content-Type, Accept,Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "GET,POST,PATCH,DELETE,PUT");
+    return res.status(200).json({});
+  }
+  next();
+});
+
+/* ------------------
     Body Parser 
 ---------------------*/
 const bodyParser = require("body-parser");
