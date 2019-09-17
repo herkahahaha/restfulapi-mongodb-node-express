@@ -35,3 +35,12 @@ router.get("/productId", (req, res, next) => {
     message: "update product"
   });
 });
+
+// DELETE
+router.get("/productId", (req, res, next) => {
+  res.status(200).json({
+    message: "delete product"
+  });
+});
+
+module.exports = routes;
