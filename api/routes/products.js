@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
 
 // POST
 router.post("/", (req, res, next) => {
-  res.status(200).json({
+  res.status(201).json({
     message: "Handling POST request to /products"
   });
 });
@@ -30,14 +30,14 @@ router.get("/:productId", (req, res, next) => {
 });
 
 // PATCH to update data same on PUT
-router.get("/productId", (req, res, next) => {
+router.get("/:productId", (req, res, next) => {
   res.status(200).json({
     message: "update product"
   });
 });
 
 // DELETE
-router.get("/productId", (req, res, next) => {
+router.delete("/:productId", (req, res, next) => {
   res.status(200).json({
     message: "delete product"
   });
