@@ -55,7 +55,7 @@ app.use((error, req, res, next) => {
 ---------------------*/
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/simple-shop-db", {
-  useMonggoClient: true
+  useNewUrlParser: true
 });
 
 module.exports = app;
