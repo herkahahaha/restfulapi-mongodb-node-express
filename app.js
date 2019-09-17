@@ -50,4 +50,12 @@ app.use((error, req, res, next) => {
   res.json({ error: { message: "error message" } });
 });
 
+/* ------------------
+   Mongodb connection
+---------------------*/
+const moongoose = require("mongoose");
+moongoose.connect("mongodb://127.0.0.1:27017/simple-shop-db", {
+  useMonggoClient: true
+});
+
 module.exports = app;
