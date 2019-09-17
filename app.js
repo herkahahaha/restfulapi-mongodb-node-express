@@ -12,7 +12,9 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// import routes from api folder
+/* ----------------------------
+  import routes from api folder 
+--------------------------------*/
 const productRoutes = require("./api/routes/products");
 app.use("/products", productRoutes);
 
