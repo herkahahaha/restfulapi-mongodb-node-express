@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     Body Parser 
 ---------------------*/
 const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /* ----------------------------
@@ -54,8 +54,17 @@ app.use((error, req, res, next) => {
    Mongodb connection
 ---------------------*/
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/simple-shop-db", {
-  useNewUrlParser: true
-});
-
+// you can set monggo atlas, dont forget to setup env
+const mongoDb = "mongodb://localhost/simple-shop-db";
+mongoose
+  .connect(mongoDb, {
+    useNewUrlParser: true
+  })
+  .then(() => {
+    console.log("mongodb connected");
+  })
+  .catch(err => {
+    console.log(err);
+  });
+mongoose.Promise = global.Promise;
 module.exports = app;
