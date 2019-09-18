@@ -65,6 +65,7 @@ router.get("/", (req, res, next) => {
 // POST
 router.post("/", upload.single("productImage"), (req, res, next) => {
   // console.log(req.file.path);
+  // still error :(
   const product = new Product({
     _id: mongoose.Types.ObjectId(),
     name: req.body.name,
