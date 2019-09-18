@@ -72,7 +72,7 @@ router.get("/:orderId", (req, res, next) => {
   order
     .findById(req.params.orderId)
     .populate("product")
-
+    .exec()
     .then(order => {
       if (!order) {
         return res.status(404).json({
@@ -96,7 +96,7 @@ router.get("/:orderId", (req, res, next) => {
 
 // DELETE
 router.delete("/:orderId", (req, res, next) => {
-  Order.remove({ id: req.params.orderId })
+  Order.remove({ _id: req.params.orderId })
     .exec()
     .then(result => {
       res.status(200).json({
