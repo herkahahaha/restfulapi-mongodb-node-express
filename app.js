@@ -23,10 +23,12 @@ app.use((req, res, next) => {
 
 /* ------------------
     Body Parser 
----------------------*/
-const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+    const bodyParser = require("body-parser");
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
+    ---------------------*/
+// express parser
+app.use(express.json());
 
 /* ----------------------------
   import routes from api folder 
@@ -54,11 +56,12 @@ app.use((error, req, res, next) => {
    Mongodb connection
 ---------------------*/
 const mongoose = require("mongoose");
-// you can set monggo atlas, dont forget to setup env
+// you can set monggo atlas, dont forget to setup env file
 const mongoDb = "mongodb://localhost:27017/simple-shop-db";
 mongoose
   .connect(mongoDb, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true
   })
   .then(() => {
     console.log("mongodb connected");
