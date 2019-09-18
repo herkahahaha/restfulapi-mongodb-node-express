@@ -65,7 +65,7 @@ router.post("/", (req, res, next) => {
 router.get("/:productId", (req, res, next) => {
   const id = req.params.productId;
   Product.findById(id)
-    .select()
+    .select("name price _id productImage")
     .exec()
     .then(doc => {
       console.log("from db", doc);
