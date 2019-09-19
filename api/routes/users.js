@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 
+// Signup for new users
 router.post("/signup", (req, res, next) => {
   User.find({ email: req.body.email })
     .exec()
@@ -39,7 +40,7 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-// delete route
+// delete user
 router.delete("/:userId", (req, res, next) => {
   User.remove({ _id: req.params.userId })
     .exec()
