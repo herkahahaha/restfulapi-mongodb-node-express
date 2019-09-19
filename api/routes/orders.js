@@ -4,7 +4,10 @@ const mongoose = require("mongoose");
 const Order = require("../models/order");
 const Product = require("../models/product");
 
-router.get("/", (req, res, next) => {
+// import middleware to protect data
+const Auth = require("../middleware/auth");
+
+router.get("/", Auth, (req, res, next) => {
   Order.find()
     .select("product quantity _id")
     .populate("product", "name")
@@ -32,7 +35,7 @@ router.get("/", (req, res, next) => {
 });
 
 // POST to create order
-router.post("/", (req, res, next) => {
+router.post("/", Auth, (req, res, next) => {
   Product.findById(req.body.productId)
     .then(product => {
       if (!product) {
@@ -69,7 +72,7 @@ router.post("/", (req, res, next) => {
 });
 
 // GET specific order with id
-router.get("/:orderId", (req, res, next) => {
+router.get("/:orderId", Auth, (req, res, next) => {
   order
     .findById(req.params.orderId)
     .populate("product")
@@ -96,7 +99,7 @@ router.get("/:orderId", (req, res, next) => {
 });
 
 // DELETE
-router.delete("/:orderId", (req, res, next) => {
+router.delete("/:orderId", Auth, (req, res, next) => {
   Order.remove({ _id: req.params.orderId })
     .exec()
     .then(result => {
