@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/product");
 const mongoose = require("mongoose");
+// import middleware for protect
+const Auth = require("../middleware/auth");
 
 // package to add file image
 const multer = require("multer");
@@ -63,14 +65,14 @@ router.get("/", (req, res, next) => {
 });
 
 // POST
-router.post("/", upload.single("productImage"), (req, res, next) => {
+router.post("/", Auth, upload.single("productImage"), (req, res, next) => {
   // console.log(req.file.path);
   // still error :(
   const product = new Product({
     _id: mongoose.Types.ObjectId(),
     name: req.body.name,
-    price: req.body.price,
-    productImage: req.file.path
+    price: req.body.price
+    // productImage: req.file.path
   });
   product
     .save()
@@ -96,7 +98,7 @@ router.post("/", upload.single("productImage"), (req, res, next) => {
 });
 
 // GET specific data with id
-router.get("/:productId", (req, res, next) => {
+router.get("/:productId", Auth, (req, res, next) => {
   const id = req.params.productId;
   Product.findById(id)
     .select("name price _id productImage")
@@ -124,7 +126,7 @@ router.get("/:productId", (req, res, next) => {
 });
 
 // PATCH to update data same on PUT
-router.patch("/:productId", (req, res, next) => {
+router.patch("/:productId", Auth, (req, res, next) => {
   const id = req.params.productId;
   const updateOps = {};
   for (const ops of req.body) {
@@ -148,7 +150,7 @@ router.patch("/:productId", (req, res, next) => {
 });
 
 // DELETE
-router.delete("/:productId", (req, res, next) => {
+router.delete("/:productId", Auth, (req, res, next) => {
   const id = req.params.productId;
   Product.remove({ _id: id })
     .exec()
