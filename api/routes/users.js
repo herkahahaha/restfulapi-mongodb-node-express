@@ -63,7 +63,7 @@ router.post("/login", (req, res, next) => {
               email: user[0].email,
               userId: user[0]._id
             },
-            "secretkeyusingenvfor development",
+            "secretkeyusingenvfordevelopment",
             { expiresIn: "1h" }
           );
           return res.status(200).json({
