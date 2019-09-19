@@ -36,9 +36,10 @@ app.use("/uploads", express.static("uploads"));
 --------------------------------*/
 const productRoutes = require("./api/routes/products");
 app.use("/products", productRoutes);
-
 const ordersRoutes = require("./api/routes/orders");
 app.use("/orders", ordersRoutes);
+const usersRoutes = require("./api/routes/users");
+app.use("/users", usersRoutes);
 
 /* ------------------
     Handling Error    
