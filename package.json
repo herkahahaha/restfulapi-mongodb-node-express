@@ -25,5 +25,13 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herkahahaha/restfulapi-mongodb-node-express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/herkahahaha/restfulapi-mongodb-node-express/issues"
+  },
+  "homepage": "https://github.com/herkahahaha/restfulapi-mongodb-node-express#readme"
 }
