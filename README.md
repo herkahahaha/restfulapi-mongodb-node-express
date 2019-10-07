@@ -40,7 +40,7 @@ initialisasi project yang akan dibuat
 
 1. buat file 'app.js' sebagai file root yang dimana terdapat beberapa bagian bisa dilihat dari commit-an.
 2. file 'server.js' sebagai server/bagian penghubung.
-   3.folder 'api' dengan 2 folder didalamnya "models (struktur data untuk ke database)", dan 'routes(file logic CRUD pemograman )'.
+3. folder 'api' dengan 2 folder didalamnya "models (struktur data untuk ke database)", dan 'routes(file logic CRUD pemograman )'.
 
 - **Penting**<br/>
   > seluruh syntax merupakan javascript modern ES6/7, dan banyak syntax yg sama karena untuk pembelajaran.
